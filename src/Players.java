@@ -28,7 +28,7 @@ public class Players {
 	
 	public void ShowAllPlayers() throws SQLException
 	{
-		ResultSet result = db.query("SELECT * FROM players");
+		ResultSet result = db.query("SELECT * FROM players ORDER BY player_points DESC");
 		if(result != null) {
 			 while (result.next()) {
 				 int id_player = result.getInt("id_player");
@@ -72,5 +72,18 @@ public class Players {
 	public boolean delPlayer(int id_player)
 	{
 		return db.performQuery("DELETE FROM players WHERE id_player = '"+ id_player +"'");
+	}
+	
+	public boolean createTables()
+	{
+		boolean status = false;
+		status = db.performQuery("CREATE TABLE IF NOT EXISTS `matches` ( `id_match` int(11) NOT NULL AUTO_INCREMENT,`match_player1` int(11) NOT NULL,`match_player2` int(11) NOT NULL, `match_player1_points` int(11) NOT NULL,`match_player2_points` int(11) NOT NULL, `match_won` int(11) NOT NULL,PRIMARY KEY (`id_match`))");
+		status = db.performQuery("CREATE TABLE IF NOT EXISTS `players` (`id_player` int(11) NOT NULL AUTO_INCREMENT,`player_name` varchar(70) COLLATE utf8_bin NOT NULL,`player_lastname` varchar(70) COLLATE utf8_bin NOT NULL,`player_points` int(11) NOT NULL DEFAULT '0',`player_matches` int(11) NOT NULL DEFAULT '0',PRIMARY KEY (`id_player`))");
+		return status;
+	}
+	
+	public boolean dropTables()
+	{
+		return db.performQuery("DROP TABLE players, matches");
 	}
 }

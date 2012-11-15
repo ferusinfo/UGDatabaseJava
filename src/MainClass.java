@@ -42,6 +42,8 @@ public class MainClass {
 		System.out.println("3 - Usuwanie gracza");
 		System.out.println("4 - Rozpoczęcie meczu");
 		System.out.println("5 - Lista meczy");
+		System.out.println("6 - Stwórz tabele");
+		System.out.println("7 - Zrzuć tabele");
 		System.out.println("0 - Wyjście z programu");
 		System.out.println("===============");
 		
@@ -92,6 +94,12 @@ public class MainClass {
 				}catch (SQLException e){
 					e.printStackTrace();
 				}
+			break;
+			case 6:
+				players.createTables();
+			break;
+			case 7:
+				players.dropTables();
 			break;
 			case 0:
 				players.db.disconnect();
