@@ -1,0 +1,7 @@
+bit/*
+.project
+.classpath
+*.ser
+*.zip
+*~
+*.txt
