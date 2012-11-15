@@ -1,4 +1,4 @@
-bit/*
+bin/*
 .project
 .classpath
 *.ser
