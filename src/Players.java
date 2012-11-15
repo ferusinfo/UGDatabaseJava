@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Players {
-	private DatabaseClass db;
+	public DatabaseClass db;
 	
 	public Players()
 	{

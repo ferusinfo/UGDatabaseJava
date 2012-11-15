@@ -74,6 +74,7 @@ public class MainClass {
 			{e.printStackTrace();}
 		break;
 		case 0:
+			players.db.disconnect();
 			System.exit(1);
 		break;
 		default:
