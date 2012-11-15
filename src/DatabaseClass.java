@@ -15,13 +15,49 @@ import java.util.Scanner;
 import com.mysql.jdbc.*;
 
 public class DatabaseClass{
+	/**
+	 * Host do bazy
+	 * @var String
+	 */
 	private String host;
+	
+	/**
+	 * User bazy
+	 * @var String
+	 */
 	private String user;
+	
+	/**
+	 * Hasło do bazy
+	 * @var String
+	 */
 	private String password;
+	
+	/**
+	 * Wybrana baza danych
+	 * @var String
+	 */
 	private String db;
+	
+	/**
+	 * Połączenie
+	 * @var Connection
+	 */
 	private Connection conn;
+	
+	/**
+	 * Statement do wykonywania czynnosci
+	 * @var Statemen
+	 */
 	private Statement st;
 	
+	/**
+	 * Konstruktor
+	 * @param host String host
+	 * @param user String user 
+	 * @param password String hasło
+	 * @param db String wybrana baza
+	 */
 	public DatabaseClass(String host, String user, String password, String db)
 	{
 		this.host = host;
@@ -32,6 +68,9 @@ public class DatabaseClass{
 		connect();
 	}
 	
+	/**
+	 * Łączenie z bazą
+	 */
 	private void connect()
 	{
         String url = "jdbc:mysql://" + host + "/" + db;
@@ -47,9 +86,11 @@ public class DatabaseClass{
         	System.out.println("Could not connect to database.");
 			System.out.println(e);
 		}
-        //System.out.println("Connected to db.");
 	}
 	
+	/**
+	 * Odłączanie
+	 */
 	public void disconnect()
 	{
 		try {
@@ -61,6 +102,11 @@ public class DatabaseClass{
 		}
 	}
 	
+	/**
+	 * Metoda do selectów
+	 * @param query String SQL
+	 * @return ResultSet result
+	 */
 	public ResultSet query(String query)
 	{
 		ResultSet result = null;
@@ -74,6 +120,11 @@ public class DatabaseClass{
 		return result;
 	}
 	
+	/**
+	 * Metoda do wykonywania operacji na bazie (INSERT, UPDATE, DELETE)
+	 * @param query String SQL do wykonania
+	 * @return boolean status dodania
+	 */
 	public boolean performQuery(String query)
 	{
 		boolean boolResult = false;

@@ -1,3 +1,12 @@
+/**
+ * Klasa do zarządzania graczami
+ * @author Maciej 'ferus' Kolek
+ * @copyright 2012
+ */
+
+/**
+ * Import bibliotek
+ */
 import java.util.*;
 import java.io.*;
 import java.sql.Connection;
@@ -6,6 +15,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Players {
+	/**
+	 * Połączenie z bazą
+	 * @var DatabaseClass
+	 */
 	public DatabaseClass db;
 	
 	public Players()
